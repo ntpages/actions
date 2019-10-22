@@ -23,7 +23,10 @@ preprocess_manifest() {
 
     echo "Generate ArgoCD application manifest from \"$manifest\""
 
-    gomplate -f "$manifest" -o "$manifest".dist
+    ref=$(jq -r .ref "$GITHUB_EVENT_PATH")
+    repo=$(jq -r .repository.name "$GITHUB_EVENT_PATH")
+
+    GIT_REPONAME=$repo GIT_BRANCH=$ref gomplate -f "$manifest" -o "$manifest".dist
 }
 
 main() {
