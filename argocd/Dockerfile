@@ -20,6 +20,9 @@ LABEL "com.github.actions.color"="yellow"
 LABEL "repository"="https://github.com/hipages/argocd-actions"
 LABEL "homepage"="https://github.com/hipages/argocd-actions"
 
+# TODO: Probably only need the lets encrypt CA.
+RUN apt-get update && apt-get install -y ca-certificates
+
 COPY --from=argocd /usr/local/bin/argocd /usr/local/bin/argocd
 COPY --from=gomplate /gomplate /usr/local/bin/gomplate
 COPY --from=jq /usr/local/bin/jq /usr/local/bin/jq
