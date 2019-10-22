@@ -1,0 +1,5 @@
+name: 'ArgoCD'
+description: 'GitHub Action for ArgoCD'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
