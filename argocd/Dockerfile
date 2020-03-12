@@ -6,7 +6,7 @@ FROM hairyhenderson/gomplate:v${GOMPLATE_VERSION}-slim as gomplate
 FROM stedolan/jq AS jq
 
 FROM debian:buster-slim AS misc
-RUN apt-get update && apt-get install -y curl ca-certificates
+RUN apt-get update && apt-get install -y curl ca-certificates git
 RUN curl -sSL -o /oq https://github.com/Blacksmoke16/oq/releases/download/v0.2.1/oq-0.2.1-linux-x86_64
 RUN chmod 755 /oq
 
