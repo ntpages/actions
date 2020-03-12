@@ -36,9 +36,8 @@ preprocess_manifest() {
 
     repo=$(jq -r .repository.name "$GITHUB_EVENT_PATH")
 
-    TRAVIS_BRANCH_SLUG=$(git rev-parse --abbrev-ref HEAD | sed -e 's/[^[:alnum:]]/-/g' | tr -s '-' | tr '[:upper:]' '[:lower:]') \
 		TOOLS_TAG=$GIT_SHA1_SHORT \
-		KUBE_CHANGE_CAUSE="Build: $GITHUB_RUN_NUMBER, Commit: $( git rev-parse HEAD | cut -c1-7), User: $GITHUB_ACTOR" \
+		KUBE_CHANGE_CAUSE="Build: $GITHUB_RUN_NUMBER, Commit: $GIT_SHA1_SHORT, User: $GITHUB_ACTOR" \
     GIT_REPONAME=$repo gomplate -f "$manifest" -o "$manifest".dist
 }
 
