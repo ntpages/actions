@@ -20,7 +20,7 @@ argocd_app_deploy() {
     echo "Application name \"$app\" extracted from manifest"
 
   argocd app create -f .argocd.yml.dist --upsert
-  argocd app wait $app --timeout 120
+  argocd app wait $app --timeout 240
 
 }
 
