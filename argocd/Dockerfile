@@ -20,11 +20,10 @@ LABEL "repository"="https://github.com/hipages/argocd-actions"
 LABEL "homepage"="https://github.com/hipages/argocd-actions"
 
 # TODO: Probably only need the lets encrypt CA.
-RUN apt-get update && apt-get install -y ca-certificates
+RUN apt-get update && apt-get install -y ca-certificates jq
 
 COPY --from=argocd /usr/local/bin/argocd /usr/local/bin/argocd
 COPY --from=gomplate /gomplate /usr/local/bin/gomplate
-COPY --from=jq /usr/local/bin/jq /usr/local/bin/jq
 COPY --from=misc /oq /usr/local/bin/oq
 COPY --from=misc /usr/share/ca-certificates /usr/share/ca-certificates
 COPY entrypoint.sh /entrypoint.sh
