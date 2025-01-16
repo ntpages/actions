@@ -1,5 +1,5 @@
 ARG ARGOCD_VERSION=2.6.15
-ARG GOMPLATE_VERSION=3.5.0
+ARG GOMPLATE_VERSION=4.3.0
 
 FROM argoproj/argocd:v${ARGOCD_VERSION} AS argocd
 FROM hairyhenderson/gomplate:v${GOMPLATE_VERSION}-slim as gomplate
