@@ -2,7 +2,7 @@ ARG ARGOCD_VERSION=2.6.15
 ARG GOMPLATE_VERSION=4.3.0
 
 FROM argoproj/argocd:v${ARGOCD_VERSION} AS argocd
-FROM hairyhenderson/gomplate:v${GOMPLATE_VERSION}-slim as gomplate
+FROM hairyhenderson/gomplate:v${GOMPLATE_VERSION} as gomplate
 
 FROM debian:buster-slim AS misc
 RUN apt-get update && apt-get install -y curl ca-certificates jq
