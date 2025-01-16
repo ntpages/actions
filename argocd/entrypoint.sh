@@ -19,6 +19,7 @@ argocd_app_deploy() {
   app=$(oq -r -i yaml .metadata.name .argocd.yml.dist)
     echo "Application name \"$app\" extracted from manifest"
 
+  cat .argocd.yml.dist
   argocd app create -f .argocd.yml.dist --upsert
   argocd app wait $app --timeout 240
 
