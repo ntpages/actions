@@ -4,7 +4,7 @@ ARG GOMPLATE_VERSION=4.3.0
 FROM argoproj/argocd:v${ARGOCD_VERSION} AS argocd
 FROM hairyhenderson/gomplate:v${GOMPLATE_VERSION} as gomplate
 
-FROM debian:buster-slim AS misc
+FROM debian:bookworm-slim AS misc
 RUN apt-get update && apt-get install -y curl ca-certificates jq
 RUN curl -sSL -o /oq https://github.com/Blacksmoke16/oq/releases/download/v0.2.1/oq-0.2.1-linux-x86_64
 RUN chmod 755 /oq
