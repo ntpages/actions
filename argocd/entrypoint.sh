@@ -10,7 +10,7 @@ argocd_app_delete() {
 
     echo "Delete application \"$app\" from ArgoCD"
 
-    argocd app delete "$app"
+    argocd app delete "$app" --yes
 }
 
 argocd_app_deploy() {
