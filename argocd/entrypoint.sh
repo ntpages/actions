@@ -47,8 +47,11 @@ main() {
 
     case "$1" in
         '' | '-h' | '--help') usage && exit 0;;
-        'app-delete') argocd_app_delete "$2" && exit 0;;
-        'app-deploy') argocd_app_deploy "$2" && exit 0;;
+        # Call these on their own, never as "f && exit 0": bash ignores set -e
+        # inside a function called from an && list, so a failed command
+        # there (such as a denied app create) would not fail the job.
+        'app-delete') argocd_app_delete "$2"; exit 0;;
+        'app-deploy') argocd_app_deploy "$2"; exit 0;;
          *) argocd "$@"
             ;;
     esac
