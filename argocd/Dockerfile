@@ -1,7 +1,7 @@
-ARG ARGOCD_VERSION=2.6.15
+ARG ARGOCD_VERSION=3.6.1
 ARG GOMPLATE_VERSION=4.3.0
 
-FROM argoproj/argocd:v${ARGOCD_VERSION} AS argocd
+FROM quay.io/argoproj/argocd:v${ARGOCD_VERSION} AS argocd
 FROM hairyhenderson/gomplate:v${GOMPLATE_VERSION} as gomplate
 
 FROM debian:bookworm-slim AS misc
